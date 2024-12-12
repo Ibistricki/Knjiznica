@@ -5,7 +5,7 @@ const mysql = require("mysql");
 
 const app = express();
 const port = 3000;
-
+app.use(cors());
 // Parser za JSON podatke
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,6 +21,29 @@ connection.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
+
+//backend Api za rezervacije
+app.get("/api/rezervirane_knjige", (request, response) => {
+  const query = `
+    SELECT 
+      knjiga.naslov AS naslov,
+      knjiga.autor AS autor,
+      CONCAT(korisnik.ime, ' ', korisnik.prezime) AS korisnik,
+      rezervacija.datum_rez AS datum_rezervacije
+    FROM 
+      rezervacija
+    JOIN 
+      knjiga ON rezervacija.knjiga = knjiga.id
+    JOIN 
+      korisnik ON rezervacija.korisnik = korisnik.id;
+  `;
+
+  connection.query(query, (error, results) => {
+    if (error) throw error;
+    response.send(results);
+  });
+});
+
 
 // Ruta za dohvat svih knjiga
 app.get("/api/knjige", (request, response) => {
