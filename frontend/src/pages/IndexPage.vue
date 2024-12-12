@@ -10,4 +10,3 @@ defineOptions({
   name: 'IndexPage'
 });
 </script>
-afsfsa

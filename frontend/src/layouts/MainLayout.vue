@@ -64,13 +64,24 @@ const linksList = [
     title: 'Popis knjiga',
     caption: 'Popis svih knjiga u knjižnici',
     icon: 'book',
-    link: '#/popisKnjiga'
+    link: '#/popisknjiga'
+  },
+  {
+    title: 'Popis knjiga baza',
+    caption: 'Popis svih knjiga u knjižnici',
+    icon: 'book',
+    link: '#/popisKnjiga1'
   },
   {
     title: 'Pretraživanje',
     caption: 'Pretraži knjigu',
     icon: 'chat',
     link: '#/pretrazivanje'
+  },  {
+    title: 'Rezervirane knjige',
+    caption: 'Pretraži rezervirane knjigu',
+    icon: 'chat',
+    link: '#/Rezervacije'
   },
   {
     title: 'O nama',
